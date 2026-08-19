@@ -20,7 +20,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # -------
 # oh-my-zsh
 # -------
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
@@ -47,28 +47,29 @@ export PATH="$PATH:/Users/russelmarcelo/Library/Application Support/JetBrains/To
 # -------
 alias c="clear"
 alias ..="cd .."
-alias ll="ls -al"
 alias config="vi ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias vim="vi"
 
 # -------
-# Claude Claude
+# npm
 # -------
-alias cc="claude"
-alias ccp="claude --permission-mode plan"
+alias dev="npm run dev"
+alias i="npm install"
 
 # -------
-# GIT ALIASES
+# Claude Code
 # -------
-alias g="git"
-alias gm="git checkout main"
-alias gs="git status"
-alias gb="git branch"
-alias gco="git checkout"
-alias gcb="git checkout -b"
-alias gm="git checkout main"
-alias ga="git add"
-alias gaa="git add ."
-alias gp="git push"
-alias gpl="git pull"
+alias cc="claude"
+alias ccr="claude --resume"
+
+# -------
+# Apps
+# -------
+alias yy="yazi"
+alias ll="lazygit"
+
+# -------
+# Starship
+# -------
+eval "$(starship init zsh)"
