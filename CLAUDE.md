@@ -26,6 +26,7 @@ Files under `dotfiles/` are the source of truth and must be copied manually to t
 | `dotfiles/.claude/settings.json` | `~/.claude/settings.json` |
 | `dotfiles/.claude/commands/` | `~/.claude/commands/` |
 | `configs/ghostty/config` | `~/.config/ghostty/config` |
+| `configs/starship/starship.toml` | `~/.config/starship.toml` |
 
 After editing `.zshrc`, reload with:
 ```bash
