@@ -1,7 +1,7 @@
-theme = Xcode Dark
+theme = Vercel
 background = #000000
-keybind = global:opt+space=toggle_quick_terminal
 macos-icon = "custom-style"
 macos-icon-frame = "plastic"
 macos-icon-ghost-color = "#FDFDFD"
 macos-icon-screen-color = "#0F0F0F"
+font-family = "Hack Nerd Font"
