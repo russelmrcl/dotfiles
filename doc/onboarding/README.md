@@ -45,14 +45,20 @@ brew install zsh-autosuggestions zsh-syntax-highlighting
 ```
  
 ---
+
+## 3. Starship Prompt
+
+[starship setup](./starship/README.md)
+
+---
  
-## 3. Git & GitHub / GitLab
+## 5. Git & GitHub / GitLab
 
 [git setup](../onboarding/git/README.md)
  
 ---
  
-## 4. Node.js (via nvm)
+## 6. Node.js (via nvm)
  
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -65,7 +71,7 @@ nvm use --lts
  
 ---
  
-## 5. Java (via SDKMAN)
+## 7. Java (via SDKMAN)
  
 ```bash
 curl -s "https://get.sdkman.io" | bash
@@ -74,7 +80,7 @@ sdk install java
  
 ---
 
-## 6. JetBrains Toolbox
+## 8. JetBrains Toolbox
  
 ```bash
 brew install --cask jetbrains-toolbox
@@ -82,7 +88,7 @@ brew install --cask jetbrains-toolbox
  
 ---
 
-## 7. `.zshrc`
+## 9. `.zshrc`
 
 [.zshrc](../../dotfiles/.zshrc)
 
