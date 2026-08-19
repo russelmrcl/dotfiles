@@ -1,0 +1,16 @@
+{
+  "model": "claude-sonnet-4-6",
+  "autoApprove": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Bash(git status:*)",
+    "Bash(git diff:*)",
+    "Bash(git log:*)",
+    "Bash(npm run lint:*)",
+    "Bash(npm run test:*)",
+    "Bash(npx tsc --noEmit:*)"
+  ],
+  "autoApproveThreshold": "medium",
+  "theme": "dark"
+}
