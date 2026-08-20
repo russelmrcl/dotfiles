@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """$directory$git_branch$git_status$nodejs$package$docker_context$cmd_duration$character"""
+format = """$directory[on]($style) $git_branch$git_status$nodejs$package$docker_context$cmd_duration$character"""
 
 add_newline = false
 
@@ -9,25 +9,25 @@ truncation_length = 0
 truncate_to_repo = false
 
 [git_branch]
-symbol = "\uf126 "
+symbol = " "
 format = "[$symbol$branch]($style) "
 
 [git_status]
-format = "[$all_status$ahead_behind]($style) "
+format = "[$all_status$ahead_behind]($style)"
 conflicted = "="
 ahead = "↑${count}"
 behind = "↓${count}"
 diverged = "⇕"
-modified = "\ueb65 "
-staged = "+${count}"
+modified = "!"
+staged = "+"
 untracked = "?"
 
 [nodejs]
-symbol = "\ue718 "
+symbol = " "
 format = "[$symbol$version]($style) "
 
 [package]
-symbol = "\uf487 "
+symbol = " "
 format = "[$symbol$version]($style) "
 
 [cmd_duration]
