@@ -21,11 +21,8 @@ work/          Work-specific dotfiles and commands
 
 ## Deploy
 
-| Source | Target |
-|---|---|
-| `dotfiles/.zshrc` | `~/.zshrc` |
-| `dotfiles/.vimrc` | `~/.vimrc` |
-| `dotfiles/.claude/settings.json` | `~/.claude/settings.json` |
-| `dotfiles/.claude/commands/` | `~/.claude/commands/` |
-| `configs/ghostty/config` | `~/.config/ghostty/config` |
-| `configs/starship/starship.toml` | `~/.config/starship.toml` |
+```bash
+bash deploy.sh
+```
+
+→ [DEPLOY.md](DEPLOY.md) for individual commands
