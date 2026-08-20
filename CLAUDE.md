@@ -9,10 +9,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Structure
 
 ```
-configs/       App-specific configs (Ghostty terminal)
-doc/           Onboarding guides for Mac web dev setup
+configs/       App-specific configs (Ghostty, Starship)
+docs/          Onboarding guides for Mac web dev setup
 dotfiles/      Shell configs and Claude Code settings/commands
-work/          Work-related notes
+work/          Work-related dotfiles and commands
 ```
 
 ## Deploying Dotfiles
