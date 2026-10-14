@@ -38,22 +38,23 @@ source ~/.zshrc
 
 Custom slash commands live in `dotfiles/.claude/commands/` and are available after deployment to `~/.claude/commands/`:
 
-| Command                   | Description                                                     |
-| ------------------------- | --------------------------------------------------------------- |
-| `/git:commit`             | Generate a conventional commit message from staged diff         |
-| `/git:code-reviewer`      | Review code for bugs, security, TypeScript, and NestJS patterns |
-| `/dev:feature-plan`       | Plan a feature with technical design and phased tasks           |
-| `/misc:code-cleanup`      | Refactor and clean up code                                      |
-| `/misc:code-explain`      | Explain complex code sections                                   |
-| `/misc:code-optimize`     | Optimize for performance/memory                                 |
-| `/misc:debug`             | Analyze errors and find root cause                              |
-| `/misc:lint`              | Run ESLint + Prettier                                           |
-| `/dev:implement`          | Execute a saved feature plan phase by phase, test-first         |
-| `/dev:tdd`                | Build test-first, one vertical slice at a time                  |
-| `/git:pr`                 | Write a PR title and body from the branch diff                  |
-| `/productivity:grill-me`  | Interview me about a plan until it holds up                     |
-| `/productivity:handoff`   | Write a handoff note for a fresh session                        |
-| `/productivity:wait-what` | Re-explain the last message simply (German)                     |
+| Command                   | Description                                                              |
+| ------------------------- | ------------------------------------------------------------------------ |
+| `/git:commit`             | Generate a conventional commit message from staged diff                  |
+| `/git:code-reviewer`      | Review code for bugs, security, TypeScript, and NestJS patterns          |
+| `/dev:feature-plan`       | Plan a feature with technical design and phased tasks                    |
+| `/misc:code-cleanup`      | Refactor and clean up code                                               |
+| `/misc:code-explain`      | Explain complex code sections                                            |
+| `/misc:code-optimize`     | Optimize for performance/memory                                          |
+| `/misc:debug`             | Analyze errors and find root cause                                       |
+| `/misc:lint`              | Run ESLint + Prettier                                                    |
+| `/dev:implement`          | Execute a saved feature plan phase by phase, test-first                  |
+| `/dev:tdd`                | Build test-first, one vertical slice at a time                           |
+| `/git:pr`                 | Write a PR title and body from the branch diff                           |
+| `/git:review-pr`          | Review a teammate's PR/MR, draft inline comments, post as pending review |
+| `/productivity:grill-me`  | Interview me about a plan until it holds up                              |
+| `/productivity:handoff`   | Write a handoff note for a fresh session                                 |
+| `/productivity:wait-what` | Re-explain the last message simply (German)                              |
 
 Commands reference `$ARGUMENTS` for inline targets and pull stack/conventions from the project's own `CLAUDE.md`.
 
