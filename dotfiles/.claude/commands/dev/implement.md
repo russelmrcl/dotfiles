@@ -20,8 +20,8 @@ No argument → use the newest `.scratch/plan-*.md`. No plan found → say so an
 
 1. Tests first at the plan's seams (see `/dev:tdd` rules: red before green, one slice at a time).
 2. Implement just enough to go green. Follow existing patterns; no new abstractions the plan doesn't call for.
-3. Verify: `npx tsc --noEmit`, the relevant tests, and lint on touched files.
-4. **Stop and report**: what was done, test/tsc result, deviations from the plan, what's next. Wait for "weiter" before the next phase.
+3. Verify, using the project's own scripts from `package.json`: `npx tsc --noEmit`, the phase's tests, lint on touched files. Fix failures before reporting; a phase is done only when all three are green.
+4. **Stop and report** with the actual command output summary (pass/fail counts, tsc errors), deviations from the plan, what's next. Wait for "weiter" before the next phase.
 
 ## Rules
 

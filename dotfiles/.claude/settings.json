@@ -1,16 +1,55 @@
 {
   "model": "claude-sonnet-5-5",
-  "autoApprove": [
-    "Read",
-    "Glob",
-    "Grep",
-    "Bash(git status:*)",
-    "Bash(git diff:*)",
-    "Bash(git log:*)",
-    "Bash(npm run lint:*)",
-    "Bash(npm run test:*)",
-    "Bash(npx tsc --noEmit:*)"
-  ],
-  "autoApproveThreshold": "medium",
-  "theme": "dark"
+  "theme": "dark",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test:*)",
+      "Bash(npx tsc --noEmit:*)",
+      "Bash(npx prettier --check:*)",
+      "Bash(npx eslint:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(rm -rf:*)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq 'git +push.*( --force( |$)| -f( |$))|git +reset +--hard|git +clean +-[a-zA-Z]*f|rm +-[a-zA-Z]*r[a-zA-Z]*f|rm +-[a-zA-Z]*f[a-zA-Z]*r'; then echo 'Blocked by guardrail: destructive command. Run it yourself if you really mean it.' >&2; exit 2; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *.ts|*.tsx|*.js|*.jsx|*.json|*.css|*.md) [ -f \"$f\" ] && npx --no-install prettier --write \"$f\" >/dev/null 2>&1 ;; esac; exit 0"
+          }
+        ]
+      }
+    ]
+  }
 }
