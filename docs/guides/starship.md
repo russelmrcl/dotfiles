@@ -45,22 +45,3 @@ Then reload:
 ```bash
 source ~/.zshrc
 ```
-
----
-
-## What the prompt shows
-
-```
-~/projects/my-repo on  main !
-❯
-```
-
-| Segment | Shows |
-|---|---|
-| `directory` | Path, truncated to 3 levels |
-| `git_branch` | Current branch (only in git repos) |
-| `git_status` | `!` modified · `+` staged · `?` untracked · `↑↓` ahead/behind |
-| `nodejs` | Node version (when in a Node project) |
-| `package` | Version from `package.json` |
-| `cmd_duration` | Execution time for commands over 2s |
-| `character` | `❯` green on success · `❯` red on error |
