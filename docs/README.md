@@ -11,18 +11,18 @@ Start with [setup.md](setup.md): a map with a short base sequence, then one guid
 
 ### Guides (`guides/`)
 
-| Guide                                   | Content                                                   |
-| --------------------------------------- | --------------------------------------------------------- |
-| [homebrew.md](guides/homebrew.md)       | Command Line Tools, Homebrew                              |
-| [git.md](guides/git.md)                 | Git identity, defaults, SSH keys for GitHub & GitLab      |
-| [macos.md](guides/macos.md)             | Menu bar always visible, Dock, Finder, keyboard, trackpad |
-| [raycast.md](guides/raycast.md)         | Raycast as Spotlight replacement (⌘ Space)                |
-| [terminal.md](guides/terminal.md)       | Ghostty, Nerd Font                                        |
-| [shell.md](guides/shell.md)             | zsh, oh-my-zsh, plugins                                   |
-| [starship.md](guides/starship.md)       | Prompt                                                    |
-| [node.md](guides/node.md)               | Node.js via nvm                                           |
-| [java.md](guides/java.md)               | Java via SDKMAN                                           |
-| [claude-code.md](guides/claude-code.md) | Install, login, settings and commands                     |
+| Guide                                   | Content                                              |
+| --------------------------------------- | ---------------------------------------------------- |
+| [homebrew.md](guides/homebrew.md)       | Command Line Tools, Homebrew                         |
+| [git.md](guides/git.md)                 | Git identity, defaults, SSH keys for GitHub & GitLab |
+| [macos.md](guides/macos.md)             | Menu bar always visible, Spotlight → Raycast         |
+| [raycast.md](guides/raycast.md)         | Raycast as Spotlight replacement (⌘ Space)           |
+| [terminal.md](guides/terminal.md)       | Ghostty, Nerd Font                                   |
+| [shell.md](guides/shell.md)             | zsh, oh-my-zsh, plugins                              |
+| [starship.md](guides/starship.md)       | Prompt                                               |
+| [node.md](guides/node.md)               | Node.js via nvm                                      |
+| [java.md](guides/java.md)               | Java via SDKMAN                                      |
+| [claude-code.md](guides/claude-code.md) | Install, login, settings and commands                |
 
 ## Claude Code
 

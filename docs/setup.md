@@ -16,16 +16,16 @@ A map, not a script. Do the **Base** steps in order, then pick only the guides f
 
 ## Pick what you use
 
-| I want…                                           | Guide                                     |
-| ------------------------------------------------- | ----------------------------------------- |
-| macOS settings (menu bar, Dock, Finder, keyboard) | [macOS settings](guides/macos.md)         |
-| Raycast instead of Spotlight                      | [Raycast](guides/raycast.md)              |
-| A terminal                                        | [Terminal (Ghostty)](guides/terminal.md)  |
-| A nicer shell (plugins, aliases)                  | [Shell (zsh, oh-my-zsh)](guides/shell.md) |
-| A prompt                                          | [Starship](guides/starship.md)            |
-| Node.js                                           | [Node.js (nvm)](guides/node.md)           |
-| Java                                              | [Java (SDKMAN)](guides/java.md)           |
-| Claude Code                                       | [Claude Code](guides/claude-code.md)      |
+| I want…                          | Guide                                     |
+| -------------------------------- | ----------------------------------------- |
+| macOS settings (menu bar)        | [macOS settings](guides/macos.md)         |
+| Raycast instead of Spotlight     | [Raycast](guides/raycast.md)              |
+| A terminal                       | [Terminal (Ghostty)](guides/terminal.md)  |
+| A nicer shell (plugins, aliases) | [Shell (zsh, oh-my-zsh)](guides/shell.md) |
+| A prompt                         | [Starship](guides/starship.md)            |
+| Node.js                          | [Node.js (nvm)](guides/node.md)           |
+| Java                             | [Java (SDKMAN)](guides/java.md)           |
+| Claude Code                      | [Claude Code](guides/claude-code.md)      |
 
 Each guide stands alone: what it does, how to install, how to verify.
 
