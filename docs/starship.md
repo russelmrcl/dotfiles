@@ -34,7 +34,7 @@ cp configs/starship/starship.toml ~/.config/starship.toml
 
 ## 4. Enable in zsh
 
-Add to the end of `~/.zshrc`:
+`dotfiles/.zshrc` already ends with this line, so it is active after `bash deploy.sh`. On a shell without that `.zshrc`, add it to the end of `~/.zshrc`:
 
 ```bash
 eval "$(starship init zsh)"

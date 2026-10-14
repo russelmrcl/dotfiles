@@ -13,11 +13,12 @@ work/          Work-specific dotfiles and commands
 
 ## Docs
 
-- [Mac Setup](docs/setup.md) — full Mac web dev onboarding
-- [Git & SSH](docs/git.md) — SSH keys for GitHub & GitLab
+- [Mac Setup](docs/setup.md) — full Mac web dev onboarding, in order
+- [Git & SSH](docs/git.md) — git identity, defaults, SSH keys for GitHub & GitLab
+- [Writing Skills](docs/writing-skills.md) — how to write Claude Code commands/skills
+- [Claude Code Best Practices](docs/claude-code-best-practices.md) — workflow habits
 - [Starship](docs/starship.md) — prompt setup
-- [Apps → Work](docs/apps/work.md) — work macbook app list
-- [Apps → Personal](docs/apps/personal.md) — personal macbook app list
+- [Apps](docs/apps.md) — one list of all apps and CLI tools
 
 ## Deploy
 
