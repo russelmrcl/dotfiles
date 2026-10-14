@@ -1,5 +1,6 @@
 ---
 description: Plan feature implementation with technical specifications
+argument-hint: "[feature description or ticket]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
 ---
@@ -17,7 +18,7 @@ Analyze internally:
 - What already exists that can be reused?
 - MongoDB vs PostgreSQL — which and why?
 - What are the real risks and unknowns?
-- Realistic time estimate — then double it
+- Realistic effort estimate (S/M/L) — add buffer for unknowns
 </thinking>
 
 ## Output
@@ -32,31 +33,34 @@ Analyze internally:
 - DB schema + which DB and why
 - Data flow: Frontend → API → DB → Response
 
-### 3. Implementation Plan
+### 3. Testing Seams
+Propose the seams to test at (existing ones preferred, highest level possible, ideally one) with one line each on what it catches and what it misses. Don't list file paths or code snippets in the spec — they go stale; describe modules and interfaces instead.
 
-**Phase 1: Foundation** (Day 1)
+### 4. Implementation Plan
+
+**Phase 1: Foundation**
 - [ ] Task
 
-**Phase 2: Core Feature** (Day 2-3)
+**Phase 2: Core Feature**
 - [ ] Task
 
-**Phase 3: Polish** (Day 4)
+**Phase 3: Polish**
 - [ ] Task
 
-### 4. File Changes
+### 5. File Changes
 **New:** list files
 **Modified:** list files + reason
 
-### 5. Dependencies
+### 6. Dependencies
 ```bash
 npm install package-name
 ```
 
-### 6. Risks
+### 7. Risks
 List potential risks with impact and mitigation:
 - **[Risk]** (High/Mid/Low) — mitigation strategy
 
-### 7. Definition of Done
+### 8. Definition of Done
 - [ ] Feature works as specified
 - [ ] TypeScript strict — kein `any`
 - [ ] Zod validation auf allen DTOs

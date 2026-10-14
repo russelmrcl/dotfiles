@@ -1,5 +1,7 @@
 ---
 description: Refactor and clean up code following best practices
+disable-model-invocation: true
+argument-hint: "[file, function, or branch]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Edit, Write
 ---
@@ -44,3 +46,5 @@ Brief explanation per change. No obvious comments.
 Optional enhancements that were out of scope.
 
 Don't over-engineer. Pragmatic improvements over perfect abstractions.
+
+Present the result first and ask before editing files. Do not stage or commit.

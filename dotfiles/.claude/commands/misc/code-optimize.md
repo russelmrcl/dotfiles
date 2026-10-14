@@ -1,7 +1,9 @@
 ---
 description: Analyze and optimize code for performance, memory, and efficiency
+disable-model-invocation: true
+argument-hint: "[file or function]"
 model: claude-sonnet-5-5
-allowed-tools: Read, Glob, Grep, Edit, Write
+allowed-tools: Read, Glob, Grep, Edit, Write, Bash
 ---
 
 Optimize the following code: $ARGUMENTS

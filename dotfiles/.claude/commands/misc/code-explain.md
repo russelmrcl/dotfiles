@@ -1,5 +1,6 @@
 ---
 description: Explain and break down complex code sections, algorithms, and patterns
+argument-hint: "[file, function, or concept]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
 ---

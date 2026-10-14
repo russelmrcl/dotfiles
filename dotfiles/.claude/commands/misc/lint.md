@@ -1,18 +1,30 @@
 ---
 description: Run ESLint, fix all violations, then run Prettier if clean
+disable-model-invocation: true
+argument-hint: "[path, default: .]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit, Write
 ---
 
 Run a full lint and format pass on: $ARGUMENTS
 
-If no argument given, run on the entire project.
+If no argument given, use `.` (entire project) as the target in all commands below.
 
 ## Instructions
 
+### Step 0: Detect setup
+```bash
+cat package.json
+```
+- `next` → `npx next lint` instead of plain ESLint
+- `expo` → `npx expo lint`
+- Otherwise → `npx eslint <target>`
+- Prettier via `eslint-plugin-prettier`? → Step 4 may be redundant
+- Monorepo (nx/turborepo)? → lint per package
+
 ### Step 1: Run ESLint
 ```bash
-npx eslint $ARGUMENTS --format=json
+npx eslint <target> --format=json
 ```
 
 Analyze the output:
@@ -21,7 +33,7 @@ Analyze the output:
 
 ### Step 2: Fix Automatically
 ```bash
-npx eslint $ARGUMENTS --fix
+npx eslint <target> --fix
 ```
 
 ### Step 3: Fix Remaining Manually
@@ -33,15 +45,21 @@ For violations that `--fix` couldn't resolve:
 
 Re-run ESLint after manual fixes to confirm clean:
 ```bash
-npx eslint $ARGUMENTS
+npx eslint <target>
 ```
 
 Do not proceed to Step 4 until ESLint is fully clean.
 
 ### Step 4: Run Prettier
 ```bash
-npx prettier $ARGUMENTS --write
+npx prettier <target> --write
 ```
+
+### Step 5: Type-check (if TypeScript)
+```bash
+npx tsc --noEmit
+```
+Report any new type errors introduced by the fixes.
 
 ## Output
 
