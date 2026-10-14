@@ -6,7 +6,7 @@ Follow in this order on a fresh Mac.
 
 | Doc | Content |
 |---|---|
-| [setup.md](setup.md) | Full setup, step by step, with a verify checklist |
+| [setup.md](setup.md) | Full setup, step by step, self-contained (no repo clone), with a verify checklist |
 | [git.md](git.md) | Git identity, defaults, SSH keys for GitHub & GitLab |
 | [apps.md](apps.md) | Single list of apps and CLI tools (`brew install`) |
 | [starship.md](starship.md) | Prompt, Nerd Font, config |

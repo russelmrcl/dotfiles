@@ -1,23 +1,10 @@
 # Mac Web Dev Setup
 
-Onboarding guide for a fresh Mac. Follow the steps **in order**; each one builds on the previous.
-
-| # | Step | Why this position |
-|---|---|---|
-| 0 | Command Line Tools | Homebrew and Git need them |
-| 1 | Homebrew | Everything else installs through it |
-| 2 | Git & SSH | Needed to clone this repo |
-| 3 | Clone this repo | Source of all configs |
-| 4 | Apps | Terminal, font and tools |
-| 5 | Shell | oh-my-zsh + plugins |
-| 6 | Node & Java | Runtimes |
-| 7 | Claude Code | Needs Node and the shell PATH |
-| 8 | Deploy configs | After oh-my-zsh, so it isn't overwritten |
-| 9 | Verify | Checklist |
+Onboarding guide for a fresh Mac. Just follow the steps **in order**; no repo needed.
 
 ---
 
-## 0. Command Line Tools
+## 1. Command Line Tools
 
 ```bash
 xcode-select --install
@@ -27,7 +14,7 @@ Wait for the installer to finish before continuing.
 
 ---
 
-## 1. Homebrew
+## 2. Homebrew
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -47,7 +34,7 @@ brew --version
 
 ---
 
-## 2. Git & SSH
+## 3. Git & SSH
 
 → [Git & SSH setup](./git.md)
 
@@ -61,25 +48,18 @@ ssh -T git@github.com
 
 ---
 
-## 3. Clone this repo
-
-```bash
-mkdir -p ~/Developer/git && cd ~/Developer/git
-git clone git@github.com:<your-user>/dotfiles.git
-cd dotfiles
-```
-
-All following commands that use relative paths (`configs/…`, `dotfiles/…`) are run from this directory.
-
----
-
 ## 4. Apps
 
 → [Apps](./apps.md)
 
 Remove what you don't need, then run the **Install** blocks. They include Ghostty, Starship, Hack Nerd Font, Lazygit and Yazi.
 
-Afterwards, open Ghostty and use it for all remaining steps. Set the font in Ghostty to `Hack Nerd Font` (already in `configs/ghostty/config`, applied in step 8).
+Then open **Ghostty** and use it for all remaining steps. Set the font:
+
+```bash
+mkdir -p ~/.config/ghostty
+echo 'font-family = "Hack Nerd Font"' >> ~/.config/ghostty/config
+```
 
 ---
 
@@ -100,10 +80,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 git clone https://github.com/zsh-users/zsh-syntax-highlighting \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
-
-The plugin list itself (`git zsh-autosuggestions zsh-syntax-highlighting`) is already in `dotfiles/.zshrc`.
-
-Prompt: → [Starship setup](./starship.md) (binary and font are installed in step 4; config is applied in step 8).
 
 ---
 
@@ -133,35 +109,72 @@ sdk install java
 
 ---
 
-## 7. Claude Code
+## 7. `.zshrc`
+
+Do this **after** nvm and SDKMAN: their installers append to `~/.zshrc`, and this replaces the file with a clean version.
+
+```bash
+cat > ~/.zshrc <<'EOF'
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+fpath+=(/opt/homebrew/share/zsh/site-functions)
+
+# Tools
+export ZSH="$HOME/.oh-my-zsh"
+export NVM_DIR="$HOME/.nvm"
+export SDKMAN_DIR="$HOME/.sdkman"
+export PATH="$HOME/.local/bin:$PATH"
+
+# oh-my-zsh (prompt comes from Starship)
+ZSH_THEME=""
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+source $ZSH/oh-my-zsh.sh
+
+# nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# SDKMAN
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# JetBrains Toolbox
+export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
+# Aliases
+alias c="clear"
+alias ..="cd .."
+alias config="vi ~/.zshrc"
+alias reload="source ~/.zshrc"
+alias vim="vi"
+alias dev="npm run dev"
+alias i="npm install"
+alias cc="claude"
+alias ccr="claude --resume"
+alias yy="yazi"
+alias ll="lazygit"
+
+# Starship (keep last)
+eval "$(starship init zsh)"
+EOF
+
+source ~/.zshrc
+```
+
+Optional prompt config (icons, git status, Node version): → [Starship setup](./starship.md)
+
+---
+
+## 8. Claude Code
 
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-The binary lands in `~/.local/bin`, which `.zshrc` already adds to `PATH`. Log in once:
+The binary lands in `~/.local/bin`, already on `PATH` from step 7. Log in once:
 
 ```bash
 claude
 ```
-
----
-
-## 8. Deploy configs
-
-From the repo root:
-
-```bash
-bash deploy.sh
-```
-
-This copies `.zshrc`, `.vimrc`, Ghostty, Starship and the Claude Code settings/commands (see [DEPLOY.md](../DEPLOY.md) for individual targets). Then open a **new** Ghostty window or run:
-
-```bash
-source ~/.zshrc
-```
-
-> `dotfiles/.zshrc` contains paths for the user `russelmarcelo` (Docker completions, JetBrains Toolbox). On another user account, adjust them after deploying.
 
 ---
 
@@ -174,7 +187,6 @@ ssh -T git@github.com
 node -v && npm -v
 java -version
 claude --version
-echo $STARSHIP_SHELL    # prints "zsh" when Starship is active
 ```
 
 Checklist:
@@ -183,12 +195,12 @@ Checklist:
 - [ ] Typing a previous command shows a grey autosuggestion
 - [ ] Valid commands turn green, invalid ones red (syntax highlighting)
 - [ ] `ll` opens Lazygit, `yy` opens Yazi, `cc` starts Claude Code
-- [ ] A test commit in any repo shows your name and email: `git log -1 --format='%an <%ae>'`
+- [ ] A test commit shows your name and email: `git log -1 --format='%an <%ae>'`
 
 ---
 
 ## Optional
 
-- **JetBrains Toolbox**: installed via the apps list; sign in and install IDEs from there.
-- **Docker Desktop**: start it once to finish setup; it adds its completions to `~/.docker`.
+- **JetBrains Toolbox**: sign in and install IDEs from there.
+- **Docker Desktop**: start it once to finish setup.
 - **Raycast / Rectangle**: grant Accessibility permission in *System Settings → Privacy & Security*.
