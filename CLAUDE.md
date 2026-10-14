@@ -47,6 +47,7 @@ Custom slash commands live in `dotfiles/.claude/commands/` and are available aft
 | `/misc:code-optimize` | Optimize for performance/memory |
 | `/misc:debug` | Analyze errors and find root cause |
 | `/misc:lint` | Run ESLint + Prettier |
+| `/dev:implement` | Execute a saved feature plan phase by phase, test-first |
 | `/dev:tdd` | Build test-first, one vertical slice at a time |
 | `/git:pr` | Write a PR title and body from the branch diff |
 | `/productivity:grill-me` | Interview me about a plan until it holds up |

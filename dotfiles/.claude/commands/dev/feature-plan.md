@@ -2,7 +2,7 @@
 description: "Use when the user wants a plan before building (\"plan this feature\", \"wie gehen wir das an\", \"technical design\"). Reads the codebase, then outputs design, test seams, phased tasks, risks and the DB choice (MongoDB vs PostgreSQL) with reasoning."
 argument-hint: "[feature description or ticket]"
 model: claude-sonnet-5-5
-allowed-tools: Read, Glob, Grep
+allowed-tools: Read, Glob, Grep, Write
 ---
 
 Create an implementation plan for: $ARGUMENTS
@@ -68,6 +68,14 @@ List potential risks with impact and mitigation:
 - [ ] Loading states
 - [ ] Tests passing
 - [ ] No console errors
+
+## Save the plan
+
+After presenting the plan, write it to `.scratch/plan-<short-slug>.md` (create the folder if needed; this is the only file you may write). End with exactly:
+
+> Plan saved to `<path>`. Review/edit it, then run `/dev:implement <path>` — ideally in a fresh session.
+
+Do not start implementing.
 
 ## Gotchas
 
