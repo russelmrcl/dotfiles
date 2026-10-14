@@ -8,7 +8,6 @@ Personal developer toolkit — dotfiles, app configs, and onboarding docs for Ma
 configs/       App configs (Ghostty, Starship)
 docs/          Onboarding guides
 dotfiles/      Shell configs and Claude Code commands
-work/          Work-specific dotfiles and commands
 ```
 
 ## Docs
