@@ -1,17 +1,26 @@
 # Docs
 
-## Mac onboarding
+## Mac setup
 
-Follow in this order on a fresh Mac.
+Start with [setup.md](setup.md): a map with a short base sequence, then one guide per tool. Each guide stands alone.
 
 | Doc | Content |
 |---|---|
-| [setup.md](setup.md) | Full setup, step by step, self-contained (no repo clone), with a verify checklist |
-| [git.md](git.md) | Git identity, defaults, SSH keys for GitHub & GitLab |
+| [setup.md](setup.md) | Order of steps, which guide for what, configs from this repo |
 | [apps.md](apps.md) | Single list of apps and CLI tools (`brew install`) |
-| [starship.md](starship.md) | Prompt, Nerd Font, config |
 
-Start with [setup.md](setup.md); it links to the others at the right step.
+### Guides (`guides/`)
+
+| Guide | Content |
+|---|---|
+| [homebrew.md](guides/homebrew.md) | Command Line Tools, Homebrew |
+| [git.md](guides/git.md) | Git identity, defaults, SSH keys for GitHub & GitLab |
+| [terminal.md](guides/terminal.md) | Ghostty, Nerd Font |
+| [shell.md](guides/shell.md) | zsh, oh-my-zsh, plugins |
+| [starship.md](guides/starship.md) | Prompt |
+| [node.md](guides/node.md) | Node.js via nvm |
+| [java.md](guides/java.md) | Java via SDKMAN |
+| [claude-code.md](guides/claude-code.md) | Install, login, settings and commands |
 
 ## Claude Code
 
