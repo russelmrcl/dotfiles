@@ -1,7 +1,7 @@
 ---
-description: "Use when the user reports slowness or wants performance/memory improvements (\"optimize\", \"zu langsam\", \"N+1\", \"memory leak\"). Finds measured bottlenecks first, then changes only what is worth the complexity."
+description: 'Use when the user reports slowness or wants performance/memory improvements ("optimize", "zu langsam", "N+1", "memory leak"). Finds measured bottlenecks first, then changes only what is worth the complexity.'
 disable-model-invocation: true
-argument-hint: "[file or function]"
+argument-hint: '[file or function]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Edit, Write, Bash
 ---
@@ -26,6 +26,7 @@ Analyze internally before changing anything:
 </thinking>
 
 ## Optimization Priorities
+
 1. Measure first — don't optimize what isn't slow
 2. DB queries (indexes, N+1, pagination, field selection)
 3. React renders (memo, useMemo, useCallback where justified)
@@ -36,18 +37,23 @@ Analyze internally before changing anything:
 ## Output
 
 ### 1. Bottlenecks Found
+
 What's actually slow and why — no premature optimization.
 
 ### 2. Optimized Code
+
 Improved version with changes applied.
 
 ### 3. What Changed & Why
+
 Per change: what, why, expected impact.
 
 ### 4. Trade-offs
+
 Complexity added vs performance gained — be honest.
 
 ### 5. Next Steps
+
 Further improvements that were out of scope.
 
 Don't sacrifice readability for micro-optimizations.

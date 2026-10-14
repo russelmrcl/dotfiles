@@ -15,26 +15,37 @@ bash deploy.sh
 ## Individual
 
 ### Starship
+
 ```bash
 cp configs/starship/starship.toml ~/.config/starship.toml
 ```
 
 ### Ghostty
+
 ```bash
 cp configs/ghostty/config ~/.config/ghostty/config
 ```
 
 ### zsh
+
 ```bash
 cp dotfiles/.zshrc ~/.zshrc && source ~/.zshrc
 ```
 
 ### Vim
+
 ```bash
 cp dotfiles/.vimrc ~/.vimrc
 ```
 
+### Prettier
+
+```bash
+cp dotfiles/.prettierrc ~/.prettierrc
+```
+
 ### Claude Code
+
 ```bash
 cp dotfiles/.claude/settings.json ~/.claude/settings.json
 cp -r dotfiles/.claude/commands/ ~/.claude/commands/

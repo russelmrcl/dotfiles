@@ -1,6 +1,6 @@
 ---
-description: "Use when the user wants a pull request title and description for the current branch (\"PR beschreibung\", \"write the PR\", \"open a PR\"). Builds title + body from the branch diff; does not push."
-argument-hint: "[base branch, default main]"
+description: 'Use when the user wants a pull request title and description for the current branch ("PR beschreibung", "write the PR", "open a PR"). Builds title + body from the branch diff; does not push.'
+argument-hint: '[base branch, default main]'
 model: claude-sonnet-5-5
 allowed-tools: Bash
 disable-model-invocation: true
@@ -25,18 +25,22 @@ Conventional Commit style, max 72 chars. If the branch name has a ticket key (`L
 
 ```markdown
 ## Summary
+
 <smallest view that makes the point: pseudocode, call tree, file tree, or a diff sketch. No preamble.>
 
 ## Evidence
+
 - **Before:** <failing test / output / screenshot>
   **After:** <passing test / output / screenshot>
 
 ## Merge danger
-**Door:** one-way | two-way   (can this be undone by reverting?)
+
+**Door:** one-way | two-way (can this be undone by reverting?)
 **Blast radius:** <one word: none / module / service / data / users>
 <only if non-trivial: migrations, API contract changes, env vars, rollout order>
 
 ## How to test
+
 1. ...
 ```
 

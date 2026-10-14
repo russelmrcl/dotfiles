@@ -1,7 +1,7 @@
 ---
-description: "Use when the user wants code tidied or refactored without changing behavior (\"clean up\", \"refactor\", \"aufräumen\"). Presents findings and the cleaned version, then asks before editing."
+description: 'Use when the user wants code tidied or refactored without changing behavior ("clean up", "refactor", "aufräumen"). Presents findings and the cleaned version, then asks before editing.'
 disable-model-invocation: true
-argument-hint: "[file, function, or branch]"
+argument-hint: '[file, function, or branch]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Edit, Write
 ---
@@ -24,6 +24,7 @@ Analyze internally before touching anything:
 </thinking>
 
 ## Refactor Priorities
+
 1. Remove dead code (unused imports, variables, commented code)
 2. Fix TypeScript (no `any`, proper interfaces, utility types)
 3. DRY — extract duplicated logic
@@ -34,15 +35,19 @@ Analyze internally before touching anything:
 ## Output
 
 ### 1. Issues Found
+
 Short list — what's wrong and why.
 
 ### 2. Refactored Code
+
 Clean version with changes applied.
 
 ### 3. What Changed & Why
+
 Brief explanation per change. No obvious comments.
 
 ### 4. Further Improvements
+
 Optional enhancements that were out of scope.
 
 Don't over-engineer. Pragmatic improvements over perfect abstractions.

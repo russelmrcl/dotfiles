@@ -34,14 +34,14 @@ git config --global rerere.enabled true
 git config --global core.editor "vim"
 ```
 
-| Setting | Why |
-|---|---|
-| `init.defaultBranch main` | New repos start on `main` |
-| `pull.rebase true` | `git pull` rebases instead of creating merge commits |
-| `push.autoSetupRemote true` | First `git push` sets the upstream automatically |
-| `fetch.prune true` | Deleted remote branches disappear locally |
-| `rerere.enabled true` | Git remembers conflict resolutions |
-| `core.editor` | Editor for commit messages and rebases |
+| Setting                     | Why                                                  |
+| --------------------------- | ---------------------------------------------------- |
+| `init.defaultBranch main`   | New repos start on `main`                            |
+| `pull.rebase true`          | `git pull` rebases instead of creating merge commits |
+| `push.autoSetupRemote true` | First `git push` sets the upstream automatically     |
+| `fetch.prune true`          | Deleted remote branches disappear locally            |
+| `rerere.enabled true`       | Git remembers conflict resolutions                   |
+| `core.editor`               | Editor for commit messages and rebases               |
 
 Global ignore for macOS noise:
 
@@ -163,6 +163,7 @@ ssh -T git@github.com            # authenticated
 ## Troubleshooting
 
 **Commits show the wrong author:**
+
 ```bash
 git config --global user.name
 git config --global user.email
@@ -170,16 +171,19 @@ git config user.email   # a repo-local value overrides the global one
 ```
 
 **Permission denied:**
+
 ```bash
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 ```
 
 **Check which key is being used:**
+
 ```bash
 ssh -vT git@github.com
 ```
 
 **List loaded keys:**
+
 ```bash
 ssh-add -l
 ```

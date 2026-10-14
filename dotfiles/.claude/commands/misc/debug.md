@@ -1,6 +1,6 @@
 ---
-description: "Use when something is broken, throwing, failing, flaky or slow (\"debug\", \"warum geht das nicht\", \"error\", stacktrace pasted). Builds a red/green feedback loop first, then finds the root cause."
-argument-hint: "[error message, stacktrace, or symptom]"
+description: 'Use when something is broken, throwing, failing, flaky or slow ("debug", "warum geht das nicht", "error", stacktrace pasted). Builds a red/green feedback loop first, then finds the root cause.'
+argument-hint: '[error message, stacktrace, or symptom]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit
 ---
@@ -14,23 +14,28 @@ Read the relevant code before theorising. Use stack and conventions from CLAUDE.
 ## Process
 
 ### 1. Build a feedback loop (this is the skill)
+
 Find ONE command you can run unattended that goes red on exactly this bug and green once fixed:
 failing test → curl/HTTP script → CLI with fixture → replayed payload → throwaway harness → `git bisect run`.
 Make it fast (seconds) and deterministic (pin time, seed RNG). For flaky bugs, raise the reproduction rate instead.
 Run it once and show the output. No red-capable command → no hypotheses. If you can't build one, say what you tried and ask the user.
 
 ### 2. Minimise
+
 Cut inputs, config and steps one at a time until every remaining element is load-bearing. This becomes the regression test.
 
 ### 3. Hypothesise
+
 List 3–5 ranked, falsifiable hypotheses: "If X is the cause, then changing Y makes the bug disappear."
 Show the list before testing — the user often knows what's already ruled out.
 
 ### 4. Instrument
+
 One variable at a time. Prefer a debugger/REPL over logs; never "log everything".
 Tag every temporary log with `[DEBUG-xxxx]` so cleanup is one grep.
 
 ### 5. Fix + verify
+
 Fix the root cause, not the symptom. Re-run the loop (green), then the wider test suite.
 Keep the minimised repro as a regression test where a seam exists. Remove all `[DEBUG-xxxx]` logs.
 

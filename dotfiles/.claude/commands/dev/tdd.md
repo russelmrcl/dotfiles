@@ -1,6 +1,6 @@
 ---
-description: "Use when the user wants to build a feature or fix a bug test-first (\"TDD\", \"red green\", \"write the test first\", \"erst Test dann Code\"). Works one vertical slice at a time at seams the user confirms."
-argument-hint: "[feature or bug]"
+description: 'Use when the user wants to build a feature or fix a bug test-first ("TDD", "red green", "write the test first", "erst Test dann Code"). Works one vertical slice at a time at seams the user confirms.'
+argument-hint: '[feature or bug]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit, Write
 ---

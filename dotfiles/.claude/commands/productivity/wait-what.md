@@ -1,5 +1,5 @@
 ---
-description: "Use when the user says they didn't understand the last message (\"wait what\", \"versteh ich nicht\", \"nochmal einfacher\"). Re-explains it briefly in plain German."
+description: 'Use when the user says they didn''t understand the last message ("wait what", "versteh ich nicht", "nochmal einfacher"). Re-explains it briefly in plain German.'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
 disable-model-invocation: true

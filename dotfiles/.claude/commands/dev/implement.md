@@ -1,6 +1,6 @@
 ---
-description: "Use when a plan from /dev:feature-plan exists and the user wants it built (\"implement the plan\", \"setz den Plan um\"). Executes the saved plan phase by phase, test-first, stopping after each phase."
-argument-hint: "[path to plan, default: newest .scratch/plan-*.md]"
+description: 'Use when a plan from /dev:feature-plan exists and the user wants it built ("implement the plan", "setz den Plan um"). Executes the saved plan phase by phase, test-first, stopping after each phase.'
+argument-hint: '[path to plan, default: newest .scratch/plan-*.md]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit, Write
 disable-model-invocation: true

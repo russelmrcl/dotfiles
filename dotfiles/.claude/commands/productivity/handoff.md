@@ -1,6 +1,6 @@
 ---
-description: "Use when the user wants to continue in a fresh session or hand work to another agent (\"handoff\", \"übergabe\", \"new session\"). Writes a compact note to $TMPDIR, not the repo."
-argument-hint: "[what the next session will be used for]"
+description: 'Use when the user wants to continue in a fresh session or hand work to another agent ("handoff", "übergabe", "new session"). Writes a compact note to $TMPDIR, not the repo.'
+argument-hint: '[what the next session will be used for]'
 model: claude-sonnet-5-5
 allowed-tools: Bash, Write
 disable-model-invocation: true

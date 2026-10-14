@@ -1,5 +1,5 @@
 ---
-description: "Use when the user wants to commit staged changes or asks for a commit message (\"commit\", \"commit message\", \"committe das\"). Reads the staged diff and branch name, offers 3 Conventional Commit variants, then commits the chosen one."
+description: 'Use when the user wants to commit staged changes or asks for a commit message ("commit", "commit message", "committe das"). Reads the staged diff and branch name, offers 3 Conventional Commit variants, then commits the chosen one.'
 disable-model-invocation: true
 model: claude-sonnet-5-5
 allowed-tools: Bash, AskUserQuestion
@@ -10,20 +10,25 @@ Generate a conventional commit message for the current staged changes.
 ## Instructions
 
 First, get the staged diff:
+
 ```bash
 git diff --cached
 ```
 
 If nothing is staged, run:
+
 ```bash
 git status
 ```
+
 And tell the user to stage their changes first — do not proceed.
 
 Check the branch name for a ticket key (e.g. `LF-42-...`):
+
 ```bash
 git rev-parse --abbrev-ref HEAD
 ```
+
 - Found → prefix every variant with `TICKET: `
 - Not found → no prefix
 
@@ -47,6 +52,7 @@ Generate exactly 3 variants (most → least specific).
 Present them with the AskUserQuestion tool so the user picks with Enter. The tool adds "Other" automatically for a custom message.
 
 Once the user selects:
+
 - A variant → run `git commit -m "<selected message>"`
 - Custom text → commit with that message
 

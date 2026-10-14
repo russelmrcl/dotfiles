@@ -1,6 +1,6 @@
 ---
-description: "Use when the user wants a plan before building (\"plan this feature\", \"wie gehen wir das an\", \"technical design\"). Reads the codebase, then outputs design, test seams, phased tasks, risks and the DB choice (MongoDB vs PostgreSQL) with reasoning."
-argument-hint: "[feature description or ticket]"
+description: 'Use when the user wants a plan before building ("plan this feature", "wie gehen wir das an", "technical design"). Reads the codebase, then outputs design, test seams, phased tasks, risks and the DB choice (MongoDB vs PostgreSQL) with reasoning.'
+argument-hint: '[feature description or ticket]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Write
 ---
@@ -24,43 +24,54 @@ Analyze internally:
 ## Output
 
 ### 1. Feature Overview
+
 - Problem it solves + who it's for
 - Key functionality
 
 ### 2. Technical Design
+
 - Component structure
 - API endpoints
 - DB schema + which DB and why
 - Data flow: Frontend → API → DB → Response
 
 ### 3. Testing Seams
+
 Propose the seams to test at (existing ones preferred, highest level possible, ideally one) with one line each on what it catches and what it misses. Don't list file paths or code snippets in the spec — they go stale; describe modules and interfaces instead.
 
 ### 4. Implementation Plan
 
 **Phase 1: Foundation**
+
 - [ ] Task
 
 **Phase 2: Core Feature**
+
 - [ ] Task
 
 **Phase 3: Polish**
+
 - [ ] Task
 
 ### 5. File Changes
+
 **New:** list files
 **Modified:** list files + reason
 
 ### 6. Dependencies
+
 ```bash
 npm install package-name
 ```
 
 ### 7. Risks
+
 List potential risks with impact and mitigation:
+
 - **[Risk]** (High/Mid/Low) — mitigation strategy
 
 ### 8. Definition of Done
+
 - [ ] Feature works as specified
 - [ ] TypeScript strict — kein `any`
 - [ ] Zod validation auf allen DTOs
