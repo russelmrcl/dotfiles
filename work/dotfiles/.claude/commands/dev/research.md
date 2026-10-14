@@ -1,6 +1,6 @@
 ---
 description: Checks whether a ticket, feature request, or argument is technically feasible by actually researching the relevant code repos (not guessing from the ticket text alone). Breaks the requirement down into needed capabilities (data source/interface, business logic, UI, infrastructure/config) and determines for each whether it already exists, partially exists, or must be built from scratch. ALWAYS use this skill when the user asks "is this technically feasible", "does this already exist in the code", "what's still missing for this", "does this ticket make sense", "can you assess/evaluate ticket X" or similar — even if no specific technical detail (like an endpoint) is mentioned. Also trigger on "estimate effort", "feasibility analysis", "gap analysis for feature Y".
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Bash, Grep, Glob, Read, WebFetch, WebSearch, Atlassian:search, Atlassian:getJiraIssue, Atlassian:searchJiraIssuesUsingJql, Atlassian:getConfluencePage
 ---
 

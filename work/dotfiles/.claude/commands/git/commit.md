@@ -1,6 +1,6 @@
 ---
 description: Analyze staged changes and generate a conventional commit message
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Bash
 ---
 

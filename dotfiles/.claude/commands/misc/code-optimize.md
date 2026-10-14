@@ -1,6 +1,6 @@
 ---
 description: Analyze and optimize code for performance, memory, and efficiency
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Edit, Write
 ---
 

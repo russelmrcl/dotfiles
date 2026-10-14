@@ -1,5 +1,6 @@
 ---
 description: Plan feature implementation with technical specifications
+model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, WebFetch, Bash, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 ---
 

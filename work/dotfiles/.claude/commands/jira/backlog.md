@@ -1,5 +1,6 @@
 ---
 description: Prüft das Jira-Backlog eines Projekts gegen den aktuellen Stand im GitHub-Repo und liefert eine Liste bearbeitbarer Tickets (nur lesend, keine Änderungen).
+model: claude-sonnet-5-5
 ---
 
 Jira-Projekt-Prefix: $ARGUMENTS

@@ -1,5 +1,6 @@
 ---
 description: Formt einen Nachrichtenentwurf um in verständlich, höflich, locker-freundlich (aber professionell) und kürzer.
+model: claude-sonnet-5-5
 ---
 
 Hier ist ein Nachrichtenentwurf (Chat/Messenger, z.B. WhatsApp, Slack, Teams):

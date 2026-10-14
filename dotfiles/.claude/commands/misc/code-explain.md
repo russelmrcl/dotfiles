@@ -1,6 +1,6 @@
 ---
 description: Explain and break down complex code sections, algorithms, and patterns
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
 ---
 

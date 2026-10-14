@@ -1,5 +1,6 @@
 ---
 description: Fasst die aktuelle Session in einer kurzen, lockeren Teams-Nachricht als Update zusammen.
+model: claude-sonnet-5-5
 ---
 
 Fasse den bisherigen Verlauf dieser Session in einer kurzen Teams-Nachricht zusammen, als Update für Kolleg:innen oder den Chat, in dem die Nachricht landet.

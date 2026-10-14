@@ -1,6 +1,6 @@
 ---
 description: Run ESLint, fix all violations, then run Prettier if clean
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit, Write
 ---
 

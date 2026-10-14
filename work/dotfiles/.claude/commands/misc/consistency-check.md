@@ -1,6 +1,6 @@
 ---
 description: Check a newly built feature for consistency with CLAUDE.md conventions, project structure, and existing code patterns
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Edit, Write
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Refactor and clean up code following best practices
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Edit, Write
 ---
 

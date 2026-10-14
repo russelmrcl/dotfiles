@@ -1,6 +1,6 @@
 ---
 description: Use this skill whenever a Dependabot PR needs to be reviewed before merging. Triggers on phrases like "dependabot PR", "dependency update", "should I merge this?", "bump X from Y to Z", or when the user pastes a Dependabot PR title/description. Analyzes what changed, what could break, runs relevant tests, and gives a clear merge/hold verdict.
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Bash
 ---
 

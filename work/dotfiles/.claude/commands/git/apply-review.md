@@ -1,7 +1,7 @@
 ---
 name: apply-review
 description: Apply PR review comments from CodeRabbit, GitHub co-workers, or any code review tool. Pulls review comments directly from GitHub via gh if no comments are pasted, reads the full PR diff, and applies the ones that make sense. Use whenever the user says "apply the PR review", "apply CodeRabbit comments", "go through the PR feedback", references a PR number/URL, or pastes review comments directly.
-model: claude-sonnet-4-6
+model: claude-sonnet-5-5
 allowed-tools: Bash, gh
 ---
 
