@@ -1,5 +1,5 @@
 ---
-description: Analyze and optimize code for performance, memory, and efficiency
+description: "Use when the user reports slowness or wants performance/memory improvements (\"optimize\", \"zu langsam\", \"N+1\", \"memory leak\"). Finds measured bottlenecks first, then changes only what is worth the complexity."
 disable-model-invocation: true
 argument-hint: "[file or function]"
 model: claude-sonnet-5-5
@@ -51,3 +51,10 @@ Complexity added vs performance gained — be honest.
 Further improvements that were out of scope.
 
 Don't sacrifice readability for micro-optimizations.
+
+## Gotchas
+
+- No measurement, no optimization — say what you measured and how.
+- Data layer (N+1, indexes, pagination) before React renders before bundle size.
+- `useMemo`/`useCallback` everywhere is a regression, not an optimization.
+- Report trade-offs honestly, including "not worth it".

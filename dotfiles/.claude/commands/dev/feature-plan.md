@@ -1,5 +1,5 @@
 ---
-description: Plan feature implementation with technical specifications
+description: "Use when the user wants a plan before building (\"plan this feature\", \"wie gehen wir das an\", \"technical design\"). Reads the codebase, then outputs design, test seams, phased tasks, risks and the DB choice (MongoDB vs PostgreSQL) with reasoning."
 argument-hint: "[feature description or ticket]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
@@ -68,3 +68,10 @@ List potential risks with impact and mitigation:
 - [ ] Loading states
 - [ ] Tests passing
 - [ ] No console errors
+
+## Gotchas
+
+- Read the code before planning; a plan that ignores existing patterns is wrong.
+- Always state MongoDB vs PostgreSQL and why, even when the answer is "unchanged".
+- No file paths or code snippets in the design text — they go stale. Paths belong in File Changes only.
+- Don't estimate in days; use S/M/L plus the main unknown.

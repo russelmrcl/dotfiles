@@ -1,5 +1,5 @@
 ---
-description: Compact the current session into a handoff note for a fresh agent
+description: "Use when the user wants to continue in a fresh session or hand work to another agent (\"handoff\", \"übergabe\", \"new session\"). Writes a compact note to $TMPDIR, not the repo."
 argument-hint: "[what the next session will be used for]"
 model: claude-sonnet-5-5
 allowed-tools: Bash, Write
@@ -24,3 +24,9 @@ Write a handoff document so a fresh agent can continue this work. $ARGUMENTS
 
 If `$ARGUMENTS` names the next session's focus, tailor the doc to it.
 End by printing the file path.
+
+## Gotchas
+
+- Reference specs/tickets/commits by path or URL; don't copy their content.
+- Redact secrets and personal data.
+- Save outside the working tree and print the path.

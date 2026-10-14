@@ -1,5 +1,5 @@
 ---
-description: Diagnose errors, failing tests, and bugs — build a red/green loop first, then find the root cause
+description: "Use when something is broken, throwing, failing, flaky or slow (\"debug\", \"warum geht das nicht\", \"error\", stacktrace pasted). Builds a red/green feedback loop first, then finds the root cause."
 argument-hint: "[error message, stacktrace, or symptom]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit
@@ -42,3 +42,10 @@ Keep it as short as the bug allows (a trivial bug gets a trivial answer).
 - **Fix:** the change (before/after if helpful)
 - **Verified by:** the loop command + result
 - **Blast radius:** same pattern elsewhere? (only if found)
+
+## Gotchas
+
+- Theorising from the code before a failing command exists is the failure mode. Loop first.
+- Reproduce the user's exact symptom, not a nearby one.
+- "Log everything" hides the signal; one tagged probe per hypothesis.
+- Remove every `[DEBUG-xxxx]` log before finishing.

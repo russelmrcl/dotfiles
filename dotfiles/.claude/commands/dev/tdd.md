@@ -1,5 +1,5 @@
 ---
-description: Build a feature or fix a bug test-first (red → green), one vertical slice at a time
+description: "Use when the user wants to build a feature or fix a bug test-first (\"TDD\", \"red green\", \"write the test first\", \"erst Test dann Code\"). Works one vertical slice at a time at seams the user confirms."
 argument-hint: "[feature or bug]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash, Edit, Write
@@ -37,3 +37,10 @@ Repeat per behavior — one seam, one test, one minimal implementation:
 
 After each cycle, one line: `RED <test> → GREEN <what was added>`.
 At the end: tests added, seams used, anything deliberately left untested.
+
+## Gotchas
+
+- Confirm the seams before the first test — unconfirmed seam, no test.
+- One test → one implementation. Writing all tests up front tests imagined behavior.
+- A test that never went red proves nothing; run it and check the failure reason.
+- Mocking your own modules is the usual sign the seam is wrong.

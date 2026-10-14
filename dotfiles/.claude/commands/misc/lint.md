@@ -1,5 +1,5 @@
 ---
-description: Run ESLint, fix all violations, then run Prettier if clean
+description: "Use when the user wants lint/format fixed (\"lint\", \"eslint\", \"prettier\", \"fix lint errors\"). Runs ESLint with fixes, resolves the rest by hand, then Prettier and tsc."
 disable-model-invocation: true
 argument-hint: "[path, default: .]"
 model: claude-sonnet-5-5
@@ -75,3 +75,10 @@ Report any new type errors introduced by the fixes.
 ### Summary
 - Overall status: clean or issues remaining
 - Any rules that were disabled + reason why
+
+## Gotchas
+
+- No argument means `.`, not an empty path.
+- `eslint-disable` needs a reason on the same line; never disable a whole file unless generated.
+- Prettier runs last; if ESLint has prettier plugin, check for a config conflict first.
+- Report new `tsc` errors caused by auto-fixes.

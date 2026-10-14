@@ -1,5 +1,5 @@
 ---
-description: Write a pull request title and body from the current branch
+description: "Use when the user wants a pull request title and description for the current branch (\"PR beschreibung\", \"write the PR\", \"open a PR\"). Builds title + body from the branch diff; does not push."
 argument-hint: "[base branch, default main]"
 model: claude-sonnet-5-5
 allowed-tools: Bash
@@ -45,3 +45,10 @@ Conventional Commit style, max 72 chars. If the branch name has a ticket key (`L
 - Only claim what the diff shows; if there's no evidence for Before/After, write "not captured" instead of inventing it.
 - Flag shared-contract changes (API shape, DB schema, shared types) under Merge danger.
 - Output the title and body as plain text for me to copy. Offer `gh pr create` as a next step.
+
+## Gotchas
+
+- Base branch is `main` unless an argument says otherwise — check `git log <base>..HEAD` isn't empty first.
+- Don't invent Before/After evidence; write "not captured".
+- Shared contract changes (API, schema, shared types) always belong under Merge danger.
+- Don't push or run `gh pr create` without being asked.

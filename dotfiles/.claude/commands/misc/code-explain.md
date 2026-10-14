@@ -1,5 +1,5 @@
 ---
-description: Explain and break down complex code sections, algorithms, and patterns
+description: "Use when the user wants code, an algorithm or a pattern explained (\"explain\", \"erklär mir das\", \"what does this do\"). Reads the context first and scales depth to the complexity."
 argument-hint: "[file, function, or concept]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
@@ -46,3 +46,10 @@ What mistakes could someone make when working with this code?
 A minimal runnable example demonstrating the core concept.
 
 Adapt explanation depth to complexity — simple code gets a simple explanation.
+
+## Gotchas
+
+- Explain what the code does, not what it was meant to do.
+- Simple code gets a short answer; skip empty template sections.
+- Check the actual call sites before claiming how something is used.
+- Mermaid only for real control flow.

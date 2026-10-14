@@ -1,5 +1,5 @@
 ---
-description: Interview me relentlessly about a plan or design until it holds up
+description: "Use when the user wants a plan, design or idea stress-tested (\"grill me\", \"challenge this\", \"hinterfrag das\"). Asks one question at a time with a recommended answer."
 argument-hint: "[plan, idea, or design to stress-test]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep
@@ -25,3 +25,9 @@ Every open decision has an answer. Then give a short summary:
 - **Decided** (bullets)
 - **Still open** (bullets, with owner)
 - **Riskiest assumption**
+
+## Gotchas
+
+- One question per message, always with your recommended answer.
+- If the codebase answers it, look it up instead of asking.
+- Don't start implementing; the output is decisions, not code.

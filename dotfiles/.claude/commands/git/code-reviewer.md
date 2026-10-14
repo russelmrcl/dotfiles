@@ -1,5 +1,5 @@
 ---
-description: Review code for bugs, security issues, and best practices
+description: "Use when the user asks to review code, a diff, a branch, or a PR (\"review\", \"schau drüber\", \"is this safe to merge\"). Reviews standards (CLAUDE.md, NestJS, TypeScript, security) and spec separately and gives a merge verdict."
 argument-hint: "[base ref, branch, or path; default: uncommitted changes]"
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash
@@ -62,3 +62,10 @@ Briefly note what's done well — keeps feedback balanced.
 Ready / Fix criticals first / Major rework needed — one sentence why.
 
 Be direct. No sugarcoating. Cite exact file and line numbers.
+
+## Gotchas
+
+- Review the diff, not the whole file; pre-existing issues go under Suggestions at most.
+- Don't flag what ESLint/Prettier/tsc already enforce.
+- Never report a finding without `file:line` and the failure scenario.
+- A missing spec is not a Spec failure — report "no spec available".

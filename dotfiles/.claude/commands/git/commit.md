@@ -1,5 +1,5 @@
 ---
-description: Analyze staged changes and generate a conventional commit message
+description: "Use when the user wants to commit staged changes or asks for a commit message (\"commit\", \"commit message\", \"committe das\"). Reads the staged diff and branch name, offers 3 Conventional Commit variants, then commits the chosen one."
 disable-model-invocation: true
 model: claude-sonnet-5-5
 allowed-tools: Bash, AskUserQuestion
@@ -51,3 +51,10 @@ Once the user selects:
 - Custom text → commit with that message
 
 Do not stage anything yourself and do not push.
+
+## Gotchas
+
+- `git diff --cached` empty ≠ nothing changed: unstaged changes are not committed. Say so, don't stage for the user.
+- Ticket key comes from the branch name; never invent one.
+- Many unrelated files in one diff → recommend splitting before writing any message.
+- Never push, never `--amend` unless asked.
