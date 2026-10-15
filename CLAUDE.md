@@ -22,7 +22,6 @@ Files under `dotfiles/` are the source of truth and must be copied manually to t
 | -------------------------------- | -------------------------- |
 | `dotfiles/.zshrc`                | `~/.zshrc`                 |
 | `dotfiles/.vimrc`                | `~/.vimrc`                 |
-| `dotfiles/.prettierrc`           | `~/.prettierrc`            |
 | `dotfiles/.claude/settings.json` | `~/.claude/settings.json`  |
 | `dotfiles/.claude/commands/`     | `~/.claude/commands/`      |
 | `configs/ghostty/config`         | `~/.config/ghostty/config` |

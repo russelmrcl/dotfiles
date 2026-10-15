@@ -38,12 +38,6 @@ cp dotfiles/.zshrc ~/.zshrc && source ~/.zshrc
 cp dotfiles/.vimrc ~/.vimrc
 ```
 
-### Prettier
-
-```bash
-cp dotfiles/.prettierrc ~/.prettierrc
-```
-
 ### Claude Code
 
 ```bash

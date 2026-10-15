@@ -39,7 +39,6 @@ Ready-made configs live in the repo; copy only the ones you want:
 | ----------- | -------------------------------- | -------------------------- |
 | zsh         | `dotfiles/.zshrc`                | `~/.zshrc`                 |
 | vim         | `dotfiles/.vimrc`                | `~/.vimrc`                 |
-| Prettier    | `dotfiles/.prettierrc`           | `~/.prettierrc`            |
 | Ghostty     | `configs/ghostty/config`         | `~/.config/ghostty/config` |
 | Starship    | `configs/starship/starship.toml` | `~/.config/starship.toml`  |
 | Claude Code | `dotfiles/.claude/`              | `~/.claude/`               |

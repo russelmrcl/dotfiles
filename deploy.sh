@@ -22,7 +22,6 @@ deploy "configs/starship/starship.toml"  "$HOME/.config/starship.toml"
 deploy "configs/ghostty/config"          "$HOME/.config/ghostty/config"
 deploy "dotfiles/.zshrc"                 "$HOME/.zshrc"
 deploy "dotfiles/.vimrc"                 "$HOME/.vimrc"
-deploy "dotfiles/.prettierrc"           "$HOME/.prettierrc"
 deploy "dotfiles/.claude/settings.json" "$HOME/.claude/settings.json"
 deploy "dotfiles/.claude/commands/"     "$HOME/.claude/commands/"
 
