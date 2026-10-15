@@ -35,8 +35,8 @@ cp -r dotfiles/.claude/commands/ ~/.claude/commands/
 ```
 
 Overview of the commands: [CLAUDE.md](../../CLAUDE.md#claude-code-slash-commands).
-How to write your own: [writing-skills.md](../writing-skills.md).
-Working habits: [claude-code-best-practices.md](../claude-code-best-practices.md).
+How to write your own: [writing-skills.md](writing-skills.md).
+Working habits: [best-practices.md](best-practices.md).
 
 ## Useful aliases
 

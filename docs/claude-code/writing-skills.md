@@ -99,4 +99,4 @@ The highest-signal part of a skill. Record each failure you actually observe, an
 
 ---
 
-For workflow habits (planning, verification, hooks, context, git), see [claude-code-best-practices.md](claude-code-best-practices.md).
+For workflow habits (planning, verification, hooks, context, git), see [best-practices.md](best-practices.md).

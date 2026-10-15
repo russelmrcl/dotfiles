@@ -8,8 +8,8 @@ A map, not a script. Do the **Base** steps in order, then pick only the guides f
 
 | #   | Guide                          | Why first                                                                 |
 | --- | ------------------------------ | ------------------------------------------------------------------------- |
-| 1   | [Homebrew](guides/homebrew.md) | Command Line Tools + package manager; everything else installs through it |
-| 2   | [Git & SSH](guides/git.md)     | Identity and keys, needed to clone any repo                               |
+| 1   | [Homebrew](homebrew.md) | Command Line Tools + package manager; everything else installs through it |
+| 2   | [Git & SSH](git.md)     | Identity and keys, needed to clone any repo                               |
 | 3   | [Apps](apps.md)                | One list of apps and CLI tools; delete what you don't use                 |
 
 ---
@@ -18,14 +18,14 @@ A map, not a script. Do the **Base** steps in order, then pick only the guides f
 
 | I want…                          | Guide                                     |
 | -------------------------------- | ----------------------------------------- |
-| macOS settings (menu bar)        | [macOS settings](guides/macos.md)         |
-| Raycast instead of Spotlight     | [Raycast](guides/raycast.md)              |
-| A terminal                       | [Terminal (Ghostty)](guides/terminal.md)  |
-| A nicer shell (plugins, aliases) | [Shell (zsh, oh-my-zsh)](guides/shell.md) |
-| A prompt                         | [Starship](guides/starship.md)            |
-| Node.js                          | [Node.js (nvm)](guides/node.md)           |
-| Java                             | [Java (SDKMAN)](guides/java.md)           |
-| Claude Code                      | [Claude Code](guides/claude-code.md)      |
+| macOS settings (menu bar)        | [macOS settings](macos.md)         |
+| Raycast instead of Spotlight     | [Raycast](raycast.md)              |
+| A terminal                       | [Terminal (Ghostty)](terminal.md)  |
+| A nicer shell (plugins, aliases) | [Shell (zsh, oh-my-zsh)](shell.md) |
+| A prompt                         | [Starship](starship.md)            |
+| Node.js                          | [Node.js (nvm)](node.md)           |
+| Java                             | [Java (SDKMAN)](java.md)           |
+| Claude Code                      | [Claude Code](../claude-code/getting-started.md)      |
 
 Each guide stands alone: what it does, how to install, how to verify.
 
@@ -43,7 +43,7 @@ Ready-made configs live in the repo; copy only the ones you want:
 | Starship    | `configs/starship/starship.toml` | `~/.config/starship.toml`  |
 | Claude Code | `dotfiles/.claude/`              | `~/.claude/`               |
 
-All at once: `bash deploy.sh` (see [DEPLOY.md](../DEPLOY.md)).
+All at once: `bash deploy.sh` (see [DEPLOY.md](../../DEPLOY.md)).
 
 ---
 
