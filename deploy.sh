@@ -23,7 +23,18 @@ deploy "configs/ghostty/config"          "$HOME/.config/ghostty/config"
 deploy "dotfiles/.zshrc"                 "$HOME/.zshrc"
 deploy "dotfiles/.vimrc"                 "$HOME/.vimrc"
 deploy "dotfiles/.claude/settings.json" "$HOME/.claude/settings.json"
-deploy "dotfiles/.claude/commands/"     "$HOME/.claude/commands/"
+
+# Skills are bucketed in the repo (dev/git/misc/productivity) but Claude Code
+# reads them flat from ~/.claude/skills/<name>/.
+for skill_md in "$REPO"/dotfiles/.claude/skills/*/*/SKILL.md; do
+  src="$(dirname "$skill_md")"
+  name="$(basename "$src")"
+  dst="$HOME/.claude/skills/$name"
+  mkdir -p "$HOME/.claude/skills"
+  if [ -d "$dst" ]; then rm -r "$dst"; fi
+  cp -R "$src" "$dst"
+  echo "✓ skill $name → $dst"
+done
 
 echo ""
 echo "Done. Reload zsh: source ~/.zshrc"

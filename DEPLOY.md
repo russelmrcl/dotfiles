@@ -42,5 +42,10 @@ cp dotfiles/.vimrc ~/.vimrc
 
 ```bash
 cp dotfiles/.claude/settings.json ~/.claude/settings.json
-cp -r dotfiles/.claude/commands/ ~/.claude/commands/
+for d in dotfiles/.claude/skills/*/*/; do
+  n="$(basename "$d")"
+  mkdir -p ~/.claude/skills
+  rm -r ~/.claude/skills/"$n" 2>/dev/null
+  cp -R "$d" ~/.claude/skills/"$n"
+done
 ```

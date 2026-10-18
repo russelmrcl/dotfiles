@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Purpose
 
-**toolbox** is a personal developer toolkit — dotfiles, app configs, onboarding docs, and Claude Code slash commands. There is no build pipeline or test suite; changes here are config/doc edits deployed manually to the host machine.
+**toolbox** is a personal developer toolkit — dotfiles, app configs, onboarding docs, and Claude Code skills. There is no build pipeline or test suite; changes here are config/doc edits deployed manually to the host machine.
 
 ## Repository Structure
 
 ```
 configs/       App-specific configs (Ghostty, Starship)
 docs/          mac-setup/ (Mac web dev setup guides), claude-code/ (skills, best practices)
-dotfiles/      Shell configs and Claude Code settings/commands
+dotfiles/      Shell configs and Claude Code settings and skills
 ```
 
 ## Deploying Dotfiles
@@ -23,7 +23,7 @@ Files under `dotfiles/` are the source of truth and must be copied manually to t
 | `dotfiles/.zshrc`                | `~/.zshrc`                 |
 | `dotfiles/.vimrc`                | `~/.vimrc`                 |
 | `dotfiles/.claude/settings.json` | `~/.claude/settings.json`  |
-| `dotfiles/.claude/commands/`     | `~/.claude/commands/`      |
+| `dotfiles/.claude/skills/*/*/`   | `~/.claude/skills/<name>/` |
 | `configs/ghostty/config`         | `~/.config/ghostty/config` |
 | `configs/starship/starship.toml` | `~/.config/starship.toml`  |
 
@@ -33,29 +33,50 @@ After editing `.zshrc`, reload with:
 source ~/.zshrc
 ```
 
-## Claude Code Slash Commands
+## Claude Code Skills
 
-Custom slash commands live in `dotfiles/.claude/commands/` and are available after deployment to `~/.claude/commands/`:
+Every slash command is a skill: `dotfiles/.claude/skills/<bucket>/<name>/SKILL.md`. Buckets (`dev`, `git`, `misc`, `productivity`) only organise the repo; `deploy.sh` copies each skill flat to `~/.claude/skills/<name>/`, so the slash command is `/<name>`.
 
-| Command                   | Description                                                              |
-| ------------------------- | ------------------------------------------------------------------------ |
-| `/git:commit`             | Generate a conventional commit message from staged diff                  |
-| `/git:code-reviewer`      | Review code for bugs, security, TypeScript, and NestJS patterns          |
-| `/dev:feature-plan`       | Plan a feature with technical design and phased tasks                    |
-| `/misc:code-cleanup`      | Refactor and clean up code                                               |
-| `/misc:code-explain`      | Explain complex code sections                                            |
-| `/misc:code-optimize`     | Optimize for performance/memory                                          |
-| `/misc:debug`             | Analyze errors and find root cause                                       |
-| `/misc:lint`              | Run ESLint + Prettier                                                    |
-| `/dev:implement`          | Execute a saved feature plan phase by phase, test-first                  |
-| `/dev:tdd`                | Build test-first, one vertical slice at a time                           |
-| `/git:pr`                 | Write a PR title and body from the branch diff                           |
-| `/git:review-pr`          | Review a teammate's PR/MR, draft inline comments, post as pending review |
-| `/productivity:grill-me`  | Interview me about a plan until it holds up                              |
-| `/productivity:handoff`   | Write a handoff note for a fresh session                                 |
-| `/productivity:wait-what` | Re-explain the last message simply (German)                              |
+### User-invoked
 
-Commands reference `$ARGUMENTS` for inline targets and pull stack/conventions from the project's own `CLAUDE.md`.
+Reachable only when typed (`disable-model-invocation: true`).
+
+| Skill            | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| `/commit`        | Write a Conventional Commit message from the staged diff and commit it |
+| `/pr`            | Write a PR title and body from the branch diff                         |
+| `/review-pr`     | Review a teammate PR/MR, draft inline comments, post as pending review |
+| `/implement`     | Execute a saved feature plan phase by phase, test-first                |
+| `/code-cleanup`  | Refactor and tidy code without changing behavior                       |
+| `/code-optimize` | Find measured bottlenecks and optimize what is worth it                |
+| `/lint`          | Run ESLint with fixes, then Prettier and tsc                           |
+| `/grill-me`      | Stress-test a plan, one question at a time                             |
+| `/handoff`       | Write a handoff note for a fresh session                               |
+| `/wait-what`     | Re-explain the last message in plain language                          |
+
+### Model-invoked
+
+Typed or picked by Claude from the description.
+
+| Skill            | Description                                                        |
+| ---------------- | ------------------------------------------------------------------ |
+| `/feature-plan`  | Plan a feature with design, test seams, phased tasks and DB choice |
+| `/tdd`           | Build test-first, one vertical slice at a time                     |
+| `/code-reviewer` | Review code for standards, spec and security; merge verdict        |
+| `/code-explain`  | Explain code, scaled to its complexity                             |
+| `/debug`         | Build a red/green feedback loop, then find the root cause          |
+| `/chat-message`  | Write or rewrite a Slack/Teams/Discord message in a human voice    |
+
+### Skill conventions
+
+All skills share one shape (details in `docs/claude-code/writing-skills.md`):
+
+- English only. Output language follows the user's input.
+- Frontmatter order: `name`, `description`, `argument-hint`, `model`, `allowed-tools`, `disable-model-invocation`.
+- User-invoked skills: one-line human-facing `description`, no trigger list. Model-invoked skills: `description` starts with "Use when" and names the distinct triggers.
+- Body: one-line job with `$ARGUMENTS`, the no-argument behavior, `## Steps` (each ends on a completion criterion), `## Output` if the result has a fixed shape, `## Gotchas` last.
+- One skill calls another through the instruction `Call the Skill tool with "<name>"`, and only model-invoked skills can be called that way.
+- Skills reference `$ARGUMENTS` for inline targets and pull stack and conventions from the project's own `CLAUDE.md`.
 
 ## Tech Stack (implied by toolbox setup)
 

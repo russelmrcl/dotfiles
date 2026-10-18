@@ -7,7 +7,7 @@ Personal developer toolkit — dotfiles, app configs, and onboarding docs for Ma
 ```
 configs/       App configs (Ghostty, Starship)
 docs/          Mac setup guides and Claude Code docs
-dotfiles/      Shell configs and Claude Code commands
+dotfiles/      Shell configs and Claude Code settings/skills
 ```
 
 ## Docs
@@ -16,7 +16,7 @@ dotfiles/      Shell configs and Claude Code commands
 - [Git & SSH](docs/mac-setup/git.md) — git identity, defaults, SSH keys for GitHub & GitLab
 - [Starship](docs/mac-setup/starship.md) — prompt setup
 - [Apps](docs/mac-setup/apps.md) — one list of all apps and CLI tools
-- [Claude Code](docs/claude-code/README.md) — install, writing commands/skills, workflow habits
+- [Claude Code](docs/claude-code/README.md) — install, writing skills, workflow habits
 
 ## Deploy
 

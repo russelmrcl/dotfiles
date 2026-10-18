@@ -24,17 +24,17 @@ Follow the prompt once.
 claude --version
 ```
 
-## Settings and commands from this repo
+## Settings and skills from this repo
 
-Custom slash commands and settings (permissions, hooks) live in `dotfiles/.claude/`:
+Custom skills (slash commands) and settings (permissions, hooks) live in `dotfiles/.claude/`:
 
 ```bash
 mkdir -p ~/.claude
 cp dotfiles/.claude/settings.json ~/.claude/settings.json
-cp -r dotfiles/.claude/commands/ ~/.claude/commands/
+bash deploy.sh   # copies the skills flat into ~/.claude/skills/<name>/
 ```
 
-Overview of the commands: [CLAUDE.md](../../CLAUDE.md#claude-code-slash-commands).
+Overview of the skills: [CLAUDE.md](../../CLAUDE.md#claude-code-skills).
 How to write your own: [writing-skills.md](writing-skills.md).
 Working habits: [best-practices.md](best-practices.md).
 

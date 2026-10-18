@@ -1,41 +1,59 @@
 # Writing Skills
 
-How to write slash commands / skills that behave predictably.
-Sources: Matt Pocock's `skills` repo (`writing-for-agents`) and `shanraisshan/claude-code-best-practice`.
+How to write skills that behave predictably.
+Sources: Matt Pocock's `skills` repo (`writing-for-agents`, `.agents/invocation.md`) and `shanraisshan/claude-code-best-practice`.
 
 ---
 
-## 1. Commands vs. skills
+## 1. Layout
 
-|               | `commands/<name>.md`     | `skills/<name>/SKILL.md`           |
-| ------------- | ------------------------ | ---------------------------------- |
-| Shape         | single file              | folder                             |
-| Namespacing   | subfolder → `git:commit` | name from directory or `name:`     |
-| Bundled files | no                       | scripts, templates, reference docs |
-| Slash command | yes                      | yes                                |
+Every slash command in this repo is a skill, one folder per skill:
 
-Use a **command** for a single prompt. Use a **skill** when the prompt needs supporting files (checklists, templates, scripts).
+```
+dotfiles/.claude/skills/<bucket>/<name>/SKILL.md   # + optional reference files next to it
+```
+
+Buckets (`dev`, `git`, `misc`, `productivity`) organise the repo only. `deploy.sh` copies each skill flat to `~/.claude/skills/<name>/`, so the command is `/<name>`. Skill names are lowercase with hyphens and unique across buckets. Reference files (checklists, templates, scripts) sit next to `SKILL.md` and are reached through a pointer in it.
 
 ## 2. Frontmatter
 
+Fixed field order:
+
 ```yaml
 ---
+name: code-reviewer
 description: 'Use when … (the trigger, not a summary)'
 argument-hint: '[path or ref]'
 model: claude-sonnet-5-5
 allowed-tools: Read, Glob, Grep, Bash
 disable-model-invocation: true # only the user may run it
-context: fork # run in an isolated subagent context
 ---
 ```
 
 | Field                      | Rule                                                                                                                                            |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `description`              | Starts with the trigger: "Use when …". It is always in context and decides _when_ the skill loads.                                              |
+| `name`                     | Equals the folder name.                                                                                                                         |
+| `description`              | Model-invoked: starts with "Use when …" and names the distinct triggers. User-invoked: one human-facing line, no trigger list. English only.    |
 | `allowed-tools`            | Grant exactly what the steps need. Missing tools cause silent permission prompts or dead ends (e.g. a select prompt without `AskUserQuestion`). |
-| `disable-model-invocation` | Set for anything with side effects (commit, deploy, cleanup) so Claude never fires it on its own.                                               |
-| `argument-hint`            | Shows in autocomplete; document what `$ARGUMENTS` expects.                                                                                      |
-| `context: fork`            | For noisy work (review, debugging) that would otherwise fill the main session.                                                                  |
+| `disable-model-invocation` | Set for anything with side effects (commit, deploy, cleanup) so Claude never fires it on its own. It makes the skill user-invoked.              |
+| `argument-hint`            | Shows in autocomplete; document what `$ARGUMENTS` expects. Omit when the skill takes no arguments.                                              |
+
+### Invocation
+
+- **Model-invoked** (default): Claude can reach the skill from its description, other skills can call it, and you can still type it. The description sits in context every turn, so it pays for that reach.
+- **User-invoked** (`disable-model-invocation: true`): only you can fire it, no description cost, but you must remember it exists.
+
+Choose model-invoked only when Claude must reach the skill on its own or another skill must call it. A skill calls another with `Call the Skill tool with "<name>"`, which works for model-invoked targets only. For a user-invoked target, tell the user to run `/<name>`.
+
+### Body shape
+
+1. One-line job with `$ARGUMENTS`.
+2. The no-argument behavior in one line (ask, or a default).
+3. `## Steps`: a numbered list, or `### N. Title` subsections when steps are long. Each ends on a completion criterion.
+4. `## Output` when the result has a fixed shape.
+5. `## Gotchas` last.
+
+Reference material (checklists, rules, platform notes) goes between Output and Gotchas under its own heading.
 
 ## 3. Writing principles
 
@@ -88,7 +106,9 @@ The highest-signal part of a skill. Record each failure you actually observe, an
 
 ## 4. Skill checklist
 
-- [ ] Description starts with "Use when …" and names distinct triggers
+- [ ] `name` equals the folder; frontmatter fields in the fixed order
+- [ ] Model-invoked: description starts with "Use when …" and names distinct triggers. User-invoked: one-line summary, no triggers
+- [ ] English only
 - [ ] `allowed-tools` matches the steps; nothing missing, nothing extra
 - [ ] Side-effect skills have `disable-model-invocation: true`
 - [ ] Every step has a checkable completion criterion
