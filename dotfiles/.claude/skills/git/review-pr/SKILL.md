@@ -41,7 +41,7 @@ gh api repos/<owner>/<repo>/pulls/<n>/comments
 gh api repos/<owner>/<repo>/pulls/<n>/reviews --jq '.[] | select(.state=="PENDING" and .user.login=="<login>") | .id'
 ```
 
-Note what other reviewers already said and what CI already flags; both stay out of your comments. Threads of mine on this PR: this is a follow-up, read [FOLLOW-UP.md](FOLLOW-UP.md) and continue there. A pending review of mine: remember its id for step 7.
+Note what other reviewers already said and what CI already flags; both stay out of your comments. Threads of mine on this PR: this is a follow-up, read [FOLLOW-UP.md](references/FOLLOW-UP.md) and continue there. A pending review of mine: remember its id for step 7.
 
 Done when you can list the topics already covered, and you know whether this is a follow-up and whether a pending review exists.
 

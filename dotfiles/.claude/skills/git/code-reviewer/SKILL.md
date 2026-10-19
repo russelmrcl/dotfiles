@@ -49,9 +49,9 @@ State the mode and the reason in one line.
 
 ### 5. Review
 
-**Single mode.** Read the changed files plus imports and tests. Use CLAUDE.md for conventions. Go through the Standards, Spec and Security sections of [CHECKLISTS.md](CHECKLISTS.md) yourself.
+**Single mode.** Read the changed files plus imports and tests. Use CLAUDE.md for conventions. Go through the Standards, Spec and Security sections of [CHECKLISTS.md](references/CHECKLISTS.md) yourself.
 
-**Parallel mode.** Spawn the subagents **in one message** with the `Agent` tool so they run in parallel. Each brief holds the diff command (or its file group), the commit list, its axis brief below, its checklist section pasted from [CHECKLISTS.md](CHECKLISTS.md), and the untrusted-data sentence from the top. None sees another's findings. Each reports under 400 words, every finding with `file:line` and the failure scenario.
+**Parallel mode.** Spawn the subagents **in one message** with the `Agent` tool so they run in parallel. Each brief holds the diff command (or its file group), the commit list, its axis brief below, its checklist section pasted from [CHECKLISTS.md](references/CHECKLISTS.md), and the untrusted-data sentence from the top. None sees another's findings. Each reports under 400 words, every finding with `file:line` and the failure scenario.
 
 - **Standards agent:** CLAUDE.md rules plus patterns in 2-3 comparable existing files. Skip what ESLint, Prettier and tsc enforce.
 - **Spec agent:** the spec text in full. Report (a) requirements missing or partial, (b) behavior added that was not asked for, (c) requirements implemented wrongly, quoting the spec line for each. Skipped without a spec.

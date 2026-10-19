@@ -10,10 +10,10 @@ Sources: Matt Pocock's `skills` repo (`writing-for-agents`, `.agents/invocation.
 Every slash command in this repo is a skill, one folder per skill:
 
 ```
-dotfiles/.claude/skills/<bucket>/<name>/SKILL.md   # + optional reference files next to it
+dotfiles/.claude/skills/<bucket>/<name>/SKILL.md   # + optional references/ folder for reference files
 ```
 
-Buckets (`dev`, `git`, `misc`, `productivity`) organise the repo only. `deploy.sh` copies each skill flat to `~/.claude/skills/<name>/`, so the command is `/<name>`. Skill names are lowercase with hyphens and unique across buckets. Reference files (checklists, templates, scripts) sit next to `SKILL.md` and are reached through a pointer in it.
+Buckets (`dev`, `git`, `misc`, `productivity`) organise the repo only. `deploy.sh` copies each skill flat to `~/.claude/skills/<name>/`, so the command is `/<name>`. Skill names are lowercase with hyphens and unique across buckets. Reference files (checklists, templates, scripts) live in a `references/` folder next to `SKILL.md` and are reached through a link in it.
 
 ## 2. Frontmatter
 
