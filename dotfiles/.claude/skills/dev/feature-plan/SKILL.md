@@ -1,9 +1,9 @@
 ---
 name: feature-plan
-description: 'Use when the user wants a plan before building ("plan this feature", "how do we approach this", "technical design"). Reads the codebase, then outputs design, test seams, phased tasks, risks and the DB choice (MongoDB vs PostgreSQL) with reasoning.'
+description: 'Use when the user wants a plan before building ("plan this feature", "how do we approach this", "technical design").'
 argument-hint: '[feature description or ticket]'
 model: claude-sonnet-5-5
-allowed-tools: Read, Glob, Grep, Write
+allowed-tools: Read, Glob, Grep, Write, AskUserQuestion
 ---
 
 Create an implementation plan for: $ARGUMENTS
@@ -13,9 +13,10 @@ No argument: ask what to plan. Use stack and conventions from CLAUDE.md.
 ## Steps
 
 1. **Read the code.** Find where the feature fits, which existing modules and patterns it reuses, and what it touches. Done when you can name the modules to reuse and the ones to change.
-2. **Choose the DB.** MongoDB or PostgreSQL, with the reason, even when the answer is "unchanged". Done when the choice and its reason are one sentence each.
-3. **Draft the plan** using the Output sections below. Estimate effort as S/M/L plus the main unknown.
-4. **Save it.** Write the plan to `.scratch/plan-<short-slug>.md` (create the folder if needed; this is the only file you may write). Done when the file exists and the reply ends with exactly:
+2. **Settle the data question.** The feature stores or queries data: choose MongoDB or PostgreSQL, with the reason, even when the answer is "unchanged". It touches no data: skip the choice. Done when the choice and its reason are one sentence each, or the skip is stated.
+3. **Clarify.** List every requirement you would have to assume and every question the code cannot answer. Ask me the ones that would change the design, at most 3, in one `AskUserQuestion` call, with your recommended answer as the first option of each. Done when every item is either answered, or an assumption with its default for the Open questions section. No design-changing unknown: skip the call.
+4. **Draft the plan** using the Output sections. Size it to the feature: a small change gets a short plan, and a section with nothing to say is left out.
+5. **Save it.** Write the plan to `.scratch/plan-<short-slug>.md` (create the folder if needed; this is the only file you may write). Done when the file exists and the reply ends with exactly:
 
    > Plan saved to `<path>`. Review or edit it, then run `/implement <path>`, ideally in a fresh session.
 
@@ -23,63 +24,58 @@ Implementation starts in `/implement`, not here.
 
 ## Output
 
-### 1. Feature Overview
+### 1. Overview
 
 - Problem it solves and who it is for
 - Key functionality
+- **Effort:** S/M/L plus the main unknown
 
-### 2. Technical Design
+### 2. Open questions and assumptions
 
-- Component structure
-- API endpoints
-- DB schema, and which DB and why
-- Data flow: Frontend → API → DB → Response
+Each item is a question still open or an assumption with its default; answered questions from the Clarify step are folded into the design instead. `/implement` asks these before it starts.
 
-### 3. Testing Seams
+### 3. Technical Design
+
+- Component structure and data flow
+- Interfaces (API endpoints, events, CLI arguments, whatever the feature exposes)
+- Data: schema, and which DB and why (only when the feature touches data)
+
+### 4. Testing Seams
 
 Propose the seams to test at (existing ones preferred, highest level possible, ideally one) with one line each on what it catches and what it misses. Describe modules and interfaces instead of file paths or code snippets.
 
-### 4. Implementation Plan
+### 5. Implementation Plan
 
-**Phase 1: Foundation**
+Phases are vertical slices: each one is small, testable and works on its own, so the first phase already runs end to end.
 
-- [ ] Task
-
-**Phase 2: Core Feature**
+**Phase 1: <what works after this phase>**
 
 - [ ] Task
 
-**Phase 3: Polish**
+**Phase 2: <what works after this phase>**
 
 - [ ] Task
 
-### 5. File Changes
+### 6. File Changes
 
 **New:** list files
 **Modified:** list files and reason
 
-### 6. Dependencies
+### 7. Dependencies
 
-```bash
-npm install package-name
-```
+New dependencies, each with the reason and the alternative you rejected. Otherwise "none".
 
-### 7. Risks
+### 8. Risks
 
-- **[Risk]** (High/Mid/Low): mitigation
+- **[Risk]** (High/Medium/Low): mitigation
 
-### 8. Definition of Done
+### 9. Definition of Done
 
-- [ ] Feature works as specified
-- [ ] TypeScript strict, no `any`
-- [ ] Zod validation on all DTOs
-- [ ] Error handling complete
-- [ ] Loading states
-- [ ] Tests passing
-- [ ] No console errors
+Checkable criteria derived from this feature's requirements, plus the standing rules from CLAUDE.md (for this repo: TypeScript strict without `any`, Zod validation on all DTOs).
 
 ## Gotchas
 
 - A plan that ignores existing patterns is wrong; read before planning.
 - File paths and code snippets go stale. Paths belong in File Changes only.
 - Estimate in S/M/L, never in days.
+- A phase named after a layer ("Foundation", "Polish") is a horizontal slice; name it after the behavior that works afterwards.

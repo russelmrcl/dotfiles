@@ -41,18 +41,18 @@ Every slash command is a skill: `dotfiles/.claude/skills/<bucket>/<name>/SKILL.m
 
 Reachable only when typed (`disable-model-invocation: true`).
 
-| Skill            | Description                                                            |
-| ---------------- | ---------------------------------------------------------------------- |
-| `/commit`        | Write a Conventional Commit message from the staged diff and commit it |
-| `/pr`            | Write a PR title and body from the branch diff                         |
-| `/review-pr`     | Review a teammate PR/MR, draft inline comments, post as pending review |
-| `/implement`     | Execute a saved feature plan phase by phase, test-first                |
-| `/code-cleanup`  | Refactor and tidy code without changing behavior                       |
-| `/code-optimize` | Find measured bottlenecks and optimize what is worth it                |
-| `/lint`          | Run ESLint with fixes, then Prettier and tsc                           |
-| `/grill-me`      | Stress-test a plan, one question at a time                             |
-| `/handoff`       | Write a handoff note for a fresh session                               |
-| `/wait-what`     | Re-explain the last message in plain language                          |
+| Skill            | Description                                                                |
+| ---------------- | -------------------------------------------------------------------------- |
+| `/commit`        | Write a Conventional Commit message from the staged diff and commit it     |
+| `/pr`            | Write a PR title and body from the branch diff                             |
+| `/review-pr`     | Review a teammate GitHub PR, draft inline comments, post as pending review |
+| `/implement`     | Execute a saved feature plan phase by phase, test-first                    |
+| `/code-cleanup`  | Refactor and tidy code without changing behavior                           |
+| `/code-optimize` | Find measured bottlenecks and optimize what is worth it                    |
+| `/lint`          | Run ESLint with fixes, then Prettier and tsc                               |
+| `/grill-me`      | Stress-test a plan, one question at a time                                 |
+| `/handoff`       | Write a handoff note for a fresh session                                   |
+| `/wait-what`     | Re-explain the last message in plain language                              |
 
 ### Model-invoked
 
