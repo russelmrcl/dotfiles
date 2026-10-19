@@ -49,11 +49,11 @@ State the mode and the reason in one line.
 
 ### 5. Review
 
-**Single mode.** Read the changed files plus imports and tests. Use CLAUDE.md for conventions. Go through the Standards, Spec and Security sections of [CHECKLISTS.md](references/CHECKLISTS.md) yourself.
+**Single mode.** Read the changed files plus imports and tests. Use CLAUDE.md for conventions. Grep every caller of each changed signature, return value or behavior. Find the expected load in the README or deploy config and name your assumption. Go through the Standards, Spec and Security sections of [CHECKLISTS.md](references/CHECKLISTS.md) yourself.
 
 **Parallel mode.** Spawn the subagents **in one message** with the `Agent` tool so they run in parallel. Each brief holds the diff command (or its file group), the commit list, its axis brief below, its checklist section pasted from [CHECKLISTS.md](references/CHECKLISTS.md), and the untrusted-data sentence from the top. None sees another's findings. Each reports under 400 words, every finding with `file:line` and the failure scenario.
 
-- **Standards agent:** CLAUDE.md rules plus patterns in 2-3 comparable existing files. Skip what ESLint, Prettier and tsc enforce.
+- **Standards agent:** CLAUDE.md rules plus patterns in 2-3 comparable existing files. Grep every caller of each changed signature, return value or behavior, and name the expected load (README, deploy config) as an assumption. Skip what ESLint, Prettier and tsc enforce.
 - **Spec agent:** the spec text in full. Report (a) requirements missing or partial, (b) behavior added that was not asked for, (c) requirements implemented wrongly, quoting the spec line for each. Skipped without a spec.
 - **Security agent:** trace untrusted input from entry point to sink; report no theoretical issue without a path.
 
@@ -61,11 +61,11 @@ Done when every axis has a result.
 
 ### 6. Verify the findings
 
-Open the cited line of every Critical (`git show <B>:<path>` for a range) and confirm the failure scenario. Drop a finding with no evidence in the code and downgrade one you cannot reproduce on paper. Done when every Critical is confirmed or gone.
+Open the cited line of every Critical (`git show <B>:<path>` for a range) and confirm the failure scenario. Drop a finding with no evidence in the code and downgrade one you cannot reproduce on paper. A `shortcut:` comment that names its limit marks a decision, not a finding, unless the expected load already crosses that limit. Done when every Critical is confirmed or gone.
 
 ### 7. Write the report
 
-Collect all findings, sort them by severity and keep each one's axis label. Edit no finding's content. The verdict follows the worst finding.
+Collect all findings, sort them by severity, keep each one's axis label and number them across all groups so I can say "fix 2 and 5". Edit no finding's content. The verdict follows the worst finding.
 
 ## Output
 
@@ -75,7 +75,7 @@ Collect all findings, sort them by severity and keep each one's axis label. Edit
 
 ### 🟢 Suggestions
 
-Each as `[Axis] file:line`: issue, failure scenario, fix hint.
+Each as `#n [Axis] file:line`: issue, failure scenario, fix hint.
 
 ### Checks run
 
@@ -95,11 +95,15 @@ One or two specific points, or leave the heading out.
 
 ### Merge verdict
 
-Ready / Fix criticals first / Major rework needed, with one sentence why.
+Ready / Fix criticals first / Major rework needed, with one sentence why. Then, each on its own line:
+
+- `Load assumed:` the load you judged scale against.
+- `Lean: -<N> lines possible.` only when lean findings exist.
+- `Not checked:` what mattered and you could not check, if anything.
 
 ## Gotchas
 
-- Review the diff, not whole files. Pre-existing issues are Suggestions at most.
+- Review the diff and the code it touches: a change can break callers it does not edit. Pre-existing issues elsewhere are Suggestions at most.
 - Subagents have no conversation context: paste the diff command, spec and checklist into each prompt.
 - Launch the subagents in a single message; separate messages run them one after another.
 - A missing spec is not a Spec failure.

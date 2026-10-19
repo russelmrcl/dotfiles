@@ -48,6 +48,7 @@ Reachable only when typed (`disable-model-invocation: true`).
 | `/review-pr`     | Review a teammate GitHub PR, draft inline comments, post as pending review |
 | `/implement`     | Execute a saved feature plan phase by phase, test-first                    |
 | `/code-cleanup`  | Refactor and tidy code without changing behavior                           |
+| `/repo-audit`    | Audit a repo or folder for bugs, risk, scale and dead weight; report only  |
 | `/code-optimize` | Find measured bottlenecks and optimize what is worth it                    |
 | `/lint`          | Run ESLint with fixes, then Prettier and tsc                               |
 | `/grill-me`      | Stress-test a plan, one question at a time                                 |

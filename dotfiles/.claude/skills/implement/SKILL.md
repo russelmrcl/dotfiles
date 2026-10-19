@@ -23,7 +23,7 @@ No argument: use the newest `.scratch/plan-*.md`. No plan found: say so, point t
 
 2. **Run one phase at a time:**
    1. Call the Skill tool with "tdd" and pass the phase as the argument. Tell it the seams are already confirmed, so it skips its seam step.
-   2. Implement just enough to go green. Follow existing patterns; add no abstraction the plan does not call for.
+   2. Implement just enough to go green, taking the first option that fully works: skip what the plan does not ask for, reuse what the codebase already has (helper, component, pattern), use the standard library or a platform feature, use an installed dependency, and only then write the minimum new code. Add no dependency for a few lines and no abstraction, wrapper or option the plan does not call for. Finish every part the phase needs, including the callers, tests and fixtures the change breaks. A deliberately simple solution with a known limit gets a one-line comment `shortcut: <the limit>, <when to upgrade>`.
    3. Verify with the project's own scripts (check `package.json` or the repo's equivalent): the phase's tests, the type-check, and lint on touched files. Done when all three are green.
    4. Tick off the phase's tasks in the plan file.
    5. **Report** in the Output format, then ask with the AskUserQuestion tool: "Next phase" (recommended), "Continue all", "Stop here". "Continue all" runs the remaining phases without asking again, but every phase still has to pass its gate, and a red gate stops the run. Failed gate: ask instead "Fix and retry" / "Stop here". Done when I have picked an option.
