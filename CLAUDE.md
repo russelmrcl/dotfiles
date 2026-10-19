@@ -23,7 +23,7 @@ Files under `dotfiles/` are the source of truth and must be copied manually to t
 | `dotfiles/.zshrc`                | `~/.zshrc`                 |
 | `dotfiles/.vimrc`                | `~/.vimrc`                 |
 | `dotfiles/.claude/settings.json` | `~/.claude/settings.json`  |
-| `dotfiles/.claude/skills/*/*/`   | `~/.claude/skills/<name>/` |
+| `dotfiles/.claude/skills/*/`     | `~/.claude/skills/<name>/` |
 | `configs/ghostty/config`         | `~/.config/ghostty/config` |
 | `configs/starship/starship.toml` | `~/.config/starship.toml`  |
 
@@ -35,7 +35,7 @@ source ~/.zshrc
 
 ## Claude Code Skills
 
-Every slash command is a skill: `dotfiles/.claude/skills/<bucket>/<name>/SKILL.md`. Buckets (`dev`, `git`, `misc`, `productivity`) only organise the repo; `deploy.sh` copies each skill flat to `~/.claude/skills/<name>/`, so the slash command is `/<name>`.
+Every slash command is a skill: `dotfiles/.claude/skills/<name>/SKILL.md`. `deploy.sh` copies each skill folder to `~/.claude/skills/<name>/`, so the slash command is `/<name>`. Skills are not grouped in subfolders; Claude Code reads them one level deep.
 
 ### User-invoked
 
